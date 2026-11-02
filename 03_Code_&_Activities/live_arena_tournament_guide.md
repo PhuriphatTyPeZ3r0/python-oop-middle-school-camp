@@ -10,18 +10,22 @@
 ## 📋 1. โครงสร้างการแข่งขันและสายประลอง (Tournament Bracket)
 
 ```mermaid
-graph TD
+flowchart LR
     subgraph Round1["รอบคัดเลือก (Round of 16 / 8)"]
-        H1["Hero โต๊ะ 1"] vs1["VS"] H2["Hero โต๊ะ 2"]
-        H3["Hero โต๊ะ 3"] vs2["VS"] H4["Hero โต๊ะ 4"]
+        H1["Hero โต๊ะ 1"] --> M1{"VS"}
+        H2["Hero โต๊ะ 2"] --> M1
+        H3["Hero โต๊ะ 3"] --> M2{"VS"}
+        H4["Hero โต๊ะ 4"] --> M2
     end
     subgraph Semi["รอบรองชนะเลิศ (Semi-Finals)"]
-        W1["ผู้ชนะคู่ที่ 1"] vs3["VS"] W2["ผู้ชนะคู่ที่ 2"]
+        M1 --> W1["ผู้ชนะคู่ที่ 1"]
+        M2 --> W2["ผู้ชนะคู่ที่ 2"]
+        W1 --> M3{"VS"}
+        W2 --> M3
     end
     subgraph Final["รอบชิงชนะเลิศ (Grand Championship)"]
-        F1["แชมป์สาย A"] vs4["VS"] F2["แชมป์สาย B"]
+        M3 --> Champion["🏆 แชมป์เปี้ยนสังเวียน"]
     end
-    Round1 --> Semi --> Final
 ```
 
 ### กติกาการแข่งขัน (Arena Rules):
